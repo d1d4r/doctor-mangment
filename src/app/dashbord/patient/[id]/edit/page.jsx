@@ -1,7 +1,13 @@
+import Form from "@/components/edit-form-patient";
+import { fetchPatientById } from "@/lib/patientData/fetchPatientById";
 import React from "react";
 
-const Page = () => {
-  return <div>Edit page </div>;
+const Page = async ({ params }) => {
+  const { id } = params;
+
+  const patient = await fetchPatientById(id);
+
+  return <Form patient={patient} />;
 };
 
 export default Page;
