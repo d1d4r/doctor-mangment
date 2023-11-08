@@ -10,8 +10,8 @@ const columns = [
   { name: "ACTIONS", uid: "actions" },
 ];
 
-const PatientTabel = async ({ query }) => {
-  const patients = await fetchAllPatient(query);
+const PatientTabel = async ({ query, currentPage }) => {
+  const patients = await fetchAllPatient(query, currentPage);
 
   return (
     <div className="overflow-x-auto">

@@ -8,6 +8,7 @@ const CustomePagination = ({ totalPages }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
+  console.log(currentPage)
 
   const createPageURL = (pageNumber) => {
     const params = new URLSearchParams(searchParams);
@@ -51,14 +52,15 @@ const CustomePagination = ({ totalPages }) => {
 
     // cursor is the default item
     return (
-      <button
+      <Link
         key={key}
-        ref={ref}
-        onClick={() => setPage(value)}
-        className={className}
+        // ref={ref}
+        // onClick={() => setPage(value)}
+        href={createPageURL(value)}
+        className={"gap-2 p-2 bg-white rounded-md"}
       >
         {value}
-      </button>
+      </Link>
     );
   };
   return (
@@ -70,6 +72,7 @@ const CustomePagination = ({ totalPages }) => {
       className="gap-2 bg-white rounded-md"
       showControls
       total={totalPages}
+      page={currentPage}
       initialPage={1}
       renderItem={renderItem}
       size="lg"
