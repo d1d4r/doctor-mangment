@@ -1,4 +1,3 @@
-import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import React from "react";
 
@@ -6,7 +5,7 @@ const CustomButton = ({ children, color }) => {
   return (
     <Link
       href="/dashbord/patient/create"
-      className="flex h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+      className="flex items-center h-10 px-4 text-sm font-medium text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
     >
       {children}
       <AddIcon />

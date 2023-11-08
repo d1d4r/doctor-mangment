@@ -1,13 +1,31 @@
+"use client";
+
 import { Input } from "@nextui-org/react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 
 const SearchInput = () => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+  const handleSearch = (e) => {
+    const term = e.target.value;
+    const params = new URLSearchParams(searchParams);
+    params.set("page", "1");
+    if (term) {
+      params.set("query", term);
+    } else {
+      params.delete("query");
+    }
+    replace(`${pathname}?${params.toString()}`);
+  };
   return (
     <Input
       className="w-1/2"
-      isClearable
       placeholder="Type to search..."
       startContent={<SearchIcon />}
+      onChange={handleSearch}
+      defaultValue={searchParams.get("query")?.toString()}
     />
   );
 };

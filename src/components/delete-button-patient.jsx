@@ -1,10 +1,15 @@
+import { deletePatient } from "@/action/deletePatient";
 import { Button } from "@nextui-org/react";
 
 const DeleteButton = ({ id }) => {
+  const deletePatientWithId = deletePatient.bind(null, id);
+
   return (
-    <Button isIconOnly color="danger" size="sm">
-      <DeleteIcon />
-    </Button>
+    <form action={deletePatientWithId}>
+      <Button isIconOnly color="danger" size="sm" type="submit">
+        <DeleteIcon />
+      </Button>
+    </form>
   );
 };
 

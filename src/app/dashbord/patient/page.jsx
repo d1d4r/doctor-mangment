@@ -1,34 +1,29 @@
+import CustomePagination from "@/components/Custom-pagination";
 import CustomButton from "@/components/CustomButton";
 import SearchInput from "@/components/CustomeInput";
 import PatientTabel from "@/components/PatientTabel";
-import { fetchAllPatient } from "@/lib/patientData/fetchAllPatient";
-import { BreadcrumbItem, Breadcrumbs, Pagination } from "@nextui-org/react";
+import { fetchCountPatient } from "@/lib/patientData/fetchCountPatient";
+import { Pagination } from "@nextui-org/react";
 import React from "react";
 
-const Page = async () => {
-  const patient = await fetchAllPatient();
+const Page = async ({ searchParams }) => {
+  
+  const query = searchParams?.query || "";
+  const currentPage = Number(searchParams?.page) || 1;
 
+  const totalPages = await fetchCountPatient();
+  
   return (
-    <div className="m-3   p-5">
-      <div className="flex items-center justify-between p-5  ">
+    <div className="p-5 m-3 overflow-auto border border-cyan-900">
+      <div className="flex items-center justify-between p-5 ">
         <h2 className="text-2xl text-white">Breadcrumbs</h2>
-        <CustomButton color="success">Add Patien</CustomButton>
+        <CustomButton color="success">Add patient</CustomButton>
       </div>
-      <div className="flex flex-col md:flex-row gap-5 items-center justify-between p-3    -b-large  -black">
+      <div className="flex flex-col items-center justify-between gap-5 p-3 md:flex-row -b-large -black">
         <SearchInput />
-        <Pagination
-          classNames={{
-            item: " bg-transparent",
-          }}
-          className="h-full bg-white rounded-md"
-          isCompact
-          showControls
-          total={20}
-          initialPage={1}
-          size="lg"
-        />
+        <CustomePagination totalPages={totalPages}/>
       </div>
-      <PatientTabel patient={patient} />
+      <PatientTabel query={query} />
     </div>
   );
 };

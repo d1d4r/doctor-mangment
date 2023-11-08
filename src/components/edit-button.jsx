@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 const EditButton = ({ id }) => {
+  
   return (
     <Link href={`/dashbord/patient/${id}/edit`}>
       <EditIcon />
