@@ -8,7 +8,7 @@ const CustomePagination = ({ totalPages }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
-  console.log(currentPage)
+  console.log(currentPage);
 
   const createPageURL = (pageNumber) => {
     const params = new URLSearchParams(searchParams);
@@ -28,17 +28,21 @@ const CustomePagination = ({ totalPages }) => {
   }) => {
     if (value === PaginationItemType.NEXT) {
       return (
-        <button key={key} onClick={onNext}>
+        <Link
+          key={key}
+          href={createPageURL(value + 1)}
+          className={"gap-2 p-2 bg-white rounded-md"}
+        >
           <ChevronRoght />
-        </button>
+        </Link>
       );
     }
 
     if (value === PaginationItemType.PREV) {
       return (
-        <button key={key} onClick={onPrevious}>
+        <Link key={key} href={createPageURL(1- value )}>
           <ChevronLeft />
-        </button>
+        </Link>
       );
     }
 
@@ -50,12 +54,9 @@ const CustomePagination = ({ totalPages }) => {
       );
     }
 
-    // cursor is the default item
     return (
       <Link
         key={key}
-        // ref={ref}
-        // onClick={() => setPage(value)}
         href={createPageURL(value)}
         className={"gap-2 p-2 bg-white rounded-md"}
       >

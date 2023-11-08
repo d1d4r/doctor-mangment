@@ -12,7 +12,7 @@ const columns = [
 
 const PatientTabel = async ({ query, currentPage }) => {
   const patients = await fetchAllPatient(query, currentPage);
-
+  
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full table-auto">

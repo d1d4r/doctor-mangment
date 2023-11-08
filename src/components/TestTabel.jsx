@@ -1,7 +1,7 @@
 import { fetchAllPatient } from "@/lib/patientData/fetchAllPatient";
 import React from "react";
-import EditButton from "./edit-button";
-import DeleteButton from "./delete-button-patient";
+import EditButton from "./patient/edit-button";
+import DeleteButton from "./patient/delete-button-patient";
 
 const columns = [
   { name: "PatientID", uid: "PatientID" },

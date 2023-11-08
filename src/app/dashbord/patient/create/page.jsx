@@ -1,4 +1,4 @@
-import Form from "@/components/create-form-patient";
+import Form from "@/components/patient/create-form-patient";
 
 const Page = async () => {
   return <Form />;

@@ -1,4 +1,4 @@
-import Form from "@/components/edit-form-patient";
+import Form from "@/components/patient/edit-form-patient";
 import { fetchPatientById } from "@/lib/patientData/fetchPatientById";
 import React from "react";
 
